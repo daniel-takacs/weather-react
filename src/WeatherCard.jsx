@@ -6,35 +6,35 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const card = (
-  <React.Fragment>
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        City
-      </Typography>
-      <Typography variant="h5" component="div">
-        7 C
-      </Typography>
-      <Typography variant="body2">
-        ICON
-       
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        Light Rain
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </React.Fragment>
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
 );
 
-export default function OutlinedCard() {
+export default function BasicCard({ temp, text, cityName }) {
   return (
-    <div className='card-container'>
-        <Box sx={{ minWidth: 275 }}>
-            <Card variant="outlined">{card}</Card>
-        </Box>
-    </div>
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 24 }} color="text.secondary" gutterBottom>
+          {temp}
+        </Typography>
+        <Typography variant="h5" component="div">
+          {cityName}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          {text}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
   );
 }
