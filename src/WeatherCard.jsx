@@ -15,7 +15,7 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard({ temp, text, cityName }) {
+export default function BasicCard({ temp, text, cityName, country }) {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
@@ -24,6 +24,9 @@ export default function BasicCard({ temp, text, cityName }) {
         </Typography>
         <Typography variant="h5" component="div">
           {cityName}
+        </Typography>
+        <Typography variant="h5" component="div">
+          {country}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           adjective
