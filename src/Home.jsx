@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-//const API_KEY = process.env.REACT_APP_API_KEY;
+
 import {
-  Container,
-  Col,
-  Row,
   Form,
   FormControl,
   Button,
   Card,
 } from "react-bootstrap";
+
 const API_KEY = "a2069d8cf5639f9169e96c51a9f7760d";
 function Home() {
   const [getCity, setGetCity] = useState("london");
   const [data, setData] = useState([]);
-  const [weather, setWeather] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
@@ -41,10 +38,7 @@ function Home() {
           let { temp, feels_like, humidity, temp_max, temp_min } = result.main;
           let { country } = result.sys;
           let { speed } = result.wind;
-
-          /*  let { Key } = result[0];
-                    let { LocalizedName } = result[0];
-                    let { ID } = result[0].Country */
+          
           setData({
             temp,
             name,
@@ -73,54 +67,57 @@ function Home() {
   };
 
   return (
-    <div>
-      <Form
-        style={{ width: "18rem" }}
-        className="d-flex"
-        onSubmit={handleSubmit}
-      >
-        <FormControl
-          type="search"
-          placeholder="Search"
-          className="me-0"
-          aria-label="Search"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <Button>
-          <LocationOnIcon />
-        </Button>
-      </Form>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <div className="top-container">
-            <Card.Title>
-              {data.name} {data.country}
-            </Card.Title>
-            <img src={icon_url} />
-          </div>
-          <Card.Text>{data.main}</Card.Text>
-          <Card.Text>{data.description}</Card.Text>
-          <Card.Text>
-            {data.temp} <span>C</span>
-          </Card.Text>
-          <Card.Text>
-            Feels like: {data.feels_like} <span>C</span>
-          </Card.Text>
-          <Card.Text>
-            Max temp: {data.temp_max} <span>C</span>
-          </Card.Text>
-          <Card.Text>
-            Min temp: {data.temp_min} <span>C</span>
-          </Card.Text>
-          <Card.Text>
-            Wind speed: {data.speed} <span>m/s</span>
-          </Card.Text>
-          <Card.Text>
-            Humidity: {data.humidity} <span>%</span>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+    <div className="home">
+      <div className="form-container">
+        <Form
+          style={{ width: "18rem" }}
+          className="d-flex"
+          onSubmit={handleSubmit}
+        >
+          <FormControl
+            type="search"
+            placeholder="Search"
+            className="me-0"
+            aria-label="Search"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Button>
+            <LocationOnIcon />
+          </Button>
+        </Form>
+
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <div className="top-container">
+              <Card.Title>
+                {data.name} {data.country}
+              </Card.Title>
+              <img src={icon_url} />
+            </div>
+            <Card.Text>{data.main}</Card.Text>
+            <Card.Text>{data.description}</Card.Text>
+            <Card.Text>
+              {data.temp} <span>C</span>
+            </Card.Text>
+            <Card.Text>
+              Feels like: {data.feels_like} <span>C</span>
+            </Card.Text>
+            <Card.Text>
+              Max temp: {data.temp_max} <span>C</span>
+            </Card.Text>
+            <Card.Text>
+              Min temp: {data.temp_min} <span>C</span>
+            </Card.Text>
+            <Card.Text>
+              Wind speed: {data.speed} <span>m/s</span>
+            </Card.Text>
+            <Card.Text>
+              Humidity: {data.humidity} <span>%</span>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
     </div>
   );
 }

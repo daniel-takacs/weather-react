@@ -1,4 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,4 +18,9 @@
 .top-container {
   display: flex;
   align-items: center;
+}
+.card-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
 }
